@@ -15,7 +15,7 @@ export const generateCode = (translations: TranslationsDict) => {
 
   return `// prettier-ignore
 export const I18nKeys = [
-  ${keys.map(key => `"${key}"`)}
+${keys.map(key => `"${key}",`).join('\n')}
 ] as const;
 
 export type I18nKey = typeof I18nKeys[number];
