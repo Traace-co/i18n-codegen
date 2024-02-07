@@ -92,7 +92,7 @@ cli
                     spinner.info("Watching translations on " + config_2.translationsFilePath + " - " + getTime());
                     watcher = chokidar_1["default"].watch([
                         path_1["default"].join(config_1.rootProjectDir, config_2.translationsFilePath),
-                        path_1["default"].join(config_1.rootProjectDir, 'i18nrc.js'),
+                        path_1["default"].join(config_1.rootProjectDir, 'i18nrc.cjs'),
                     ], {
                         interval: 1000
                     });

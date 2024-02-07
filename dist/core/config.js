@@ -8,7 +8,7 @@ var path_1 = tslib_1.__importDefault(require("path"));
  */
 exports.rootProjectDir = app_root_path_1["default"].path;
 exports.getConfigFilePath = function () {
-    return path_1["default"].join(exports.rootProjectDir, 'i18nrc.js');
+    return path_1["default"].join(exports.rootProjectDir, 'i18nrc.cjs');
 };
 exports.loadConfigFile = function () {
     var configPath = exports.getConfigFilePath();

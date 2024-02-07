@@ -11,7 +11,7 @@ export interface I18nCodegenConfig {
 export const rootProjectDir = appRootPath.path;
 
 export const getConfigFilePath = () => {
-  return path.join(rootProjectDir, 'i18nrc.js');
+  return path.join(rootProjectDir, 'i18nrc.cjs');
 };
 
 export const loadConfigFile = (): I18nCodegenConfig => {

@@ -49,7 +49,7 @@ export const I18nKeys = [
 export type I18nKey = typeof I18nKeys[number];
 ```
 
-### Create a config file `i18nrc.js` in the root of the project.
+### Create a config file `i18nrc.cjs` in the root of the project.
 
 ```js
 module.exports = {

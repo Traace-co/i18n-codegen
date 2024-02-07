@@ -86,7 +86,7 @@ cli
       const watcher = chokidar.watch(
         [
           path.join(rootProjectDir, config.translationsFilePath),
-          path.join(rootProjectDir, 'i18nrc.js'),
+          path.join(rootProjectDir, 'i18nrc.cjs'),
         ],
         {
           interval: 1000,
