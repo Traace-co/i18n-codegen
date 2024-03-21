@@ -54,10 +54,12 @@ describe('Plural Tests', () => {
     };
 
     const code = generateCode(translations);
-    const expected = fs.readFileSync(__dirname + '/expected/generated_plural.ts', {
-      encoding: 'utf-8',
-    });
+    const expected = fs.readFileSync(
+      __dirname + '/expected/generated_plural.ts',
+      {
+        encoding: 'utf-8',
+      }
+    );
     expect(code).toBe(expected);
   });
-
-})
+});

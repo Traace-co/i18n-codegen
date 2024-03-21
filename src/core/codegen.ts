@@ -1,6 +1,6 @@
 import fs from 'fs-extra';
 import path from 'path';
-import {createKeysForPlural, flattenObject} from '../util/parse-translations';
+import { createKeysForPlural, flattenObject } from '../util/parse-translations';
 import { I18nCodegenConfig, rootProjectDir } from './config';
 
 interface TranslationsDict {
