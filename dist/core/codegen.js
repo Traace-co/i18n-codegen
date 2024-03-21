@@ -8,7 +8,8 @@ var config_1 = require("./config");
 exports.generateCode = function (translations) {
     var flat = parse_translations_1.flattenObject(translations);
     var keys = Object.keys(flat);
-    return "// prettier-ignore\nexport const I18nKeys = [\n" + keys.map(function (key) { return "\"" + key + "\","; }).join('\n') + "\n] as const;\n\nexport type I18nKey = typeof I18nKeys[number];\n";
+    var keysWithPlural = parse_translations_1.createKeysForPlural(keys);
+    return "// prettier-ignore\nexport const I18nKeys = [\n" + keysWithPlural.map(function (key) { return "\"" + key + "\","; }).join('\n') + "\n] as const;\n\nexport type I18nKey = typeof I18nKeys[number];\n";
 };
 exports.runCodegen = function (config) { return tslib_1.__awaiter(void 0, void 0, void 0, function () {
     var translationsFilePath, outputCodePath, translations, code;

@@ -20,4 +20,18 @@ exports.flattenObject = function (ob) {
     }
     return toReturn;
 };
+exports.createKeysForPlural = function (keys) {
+    var results = keys
+        .map(function (key) {
+        if (key.endsWith('_one')) {
+            return [key, key.substr(0, key.length - 4)];
+        }
+        if (key.endsWith('_other')) {
+            return [key, key.substr(0, key.length - 6)];
+        }
+        return key;
+    })
+        .flat();
+    return Array.from(new Set(results));
+};
 //# sourceMappingURL=parse-translations.js.map
