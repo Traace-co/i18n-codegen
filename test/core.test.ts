@@ -43,3 +43,21 @@ describe('Core Tests', () => {
     done();
   });
 });
+
+describe('Plural Tests', () => {
+  it('should generate plural code', () => {
+    const translations = {
+      home: {
+        title_one: 'Title',
+        title_other: 'Title',
+      },
+    };
+
+    const code = generateCode(translations);
+    const expected = fs.readFileSync(__dirname + '/expected/generated_plural.ts', {
+      encoding: 'utf-8',
+    });
+    expect(code).toBe(expected);
+  });
+
+})

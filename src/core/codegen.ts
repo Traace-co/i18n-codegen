@@ -1,6 +1,6 @@
 import fs from 'fs-extra';
 import path from 'path';
-import { flattenObject } from '../util/parse-translations';
+import {createKeysForPlural, flattenObject} from '../util/parse-translations';
 import { I18nCodegenConfig, rootProjectDir } from './config';
 
 interface TranslationsDict {
@@ -12,10 +12,11 @@ export type TranslationKeys = string[];
 export const generateCode = (translations: TranslationsDict) => {
   const flat = flattenObject(translations);
   const keys = Object.keys(flat);
+  const keysWithPlural = createKeysForPlural(keys);
 
   return `// prettier-ignore
 export const I18nKeys = [
-${keys.map(key => `"${key}",`).join('\n')}
+${keysWithPlural.map(key => `"${key}",`).join('\n')}
 ] as const;
 
 export type I18nKey = typeof I18nKeys[number];
