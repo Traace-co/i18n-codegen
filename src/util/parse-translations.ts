@@ -18,3 +18,18 @@ export const flattenObject = (ob: any) => {
   }
   return toReturn;
 };
+
+export const createKeysForPlural = (keys: string[]): string[] => {
+  const results = keys
+    .map((key: string) => {
+      if (key.endsWith('_one')) {
+        return [key, key.substring(0, key.length - 4)];
+      }
+      if (key.endsWith('_other')) {
+        return [key, key.substring(0, key.length - 6)];
+      }
+      return key;
+    })
+    .flat();
+  return Array.from(new Set(results));
+};
