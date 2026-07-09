@@ -2,12 +2,18 @@
 exports.__esModule = true;
 var tslib_1 = require("tslib");
 var app_root_path_1 = tslib_1.__importDefault(require("app-root-path"));
+var fs_1 = tslib_1.__importDefault(require("fs"));
 var path_1 = tslib_1.__importDefault(require("path"));
 /**
  * Package's root dir
  */
 exports.rootProjectDir = app_root_path_1["default"].path;
 exports.getConfigFilePath = function () {
+    // Prefer i18nrc.cjs: consumers with "type": "module" need the .cjs extension.
+    var cjsPath = path_1["default"].join(exports.rootProjectDir, 'i18nrc.cjs');
+    if (fs_1["default"].existsSync(cjsPath)) {
+        return cjsPath;
+    }
     return path_1["default"].join(exports.rootProjectDir, 'i18nrc.js');
 };
 exports.loadConfigFile = function () {

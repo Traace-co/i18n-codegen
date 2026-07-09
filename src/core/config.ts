@@ -1,4 +1,5 @@
 import appRootPath from 'app-root-path';
+import fs from 'fs';
 import path from 'path';
 export interface I18nCodegenConfig {
   translationsFilePath: string;
@@ -11,6 +12,11 @@ export interface I18nCodegenConfig {
 export const rootProjectDir = appRootPath.path;
 
 export const getConfigFilePath = () => {
+  // Prefer i18nrc.cjs: consumers with "type": "module" need the .cjs extension.
+  const cjsPath = path.join(rootProjectDir, 'i18nrc.cjs');
+  if (fs.existsSync(cjsPath)) {
+    return cjsPath;
+  }
   return path.join(rootProjectDir, 'i18nrc.js');
 };
 
